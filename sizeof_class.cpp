@@ -1,5 +1,6 @@
-//cl /EHsc /I D:\Project\boost_1_53_0\boost_1_53_0\ multiple_inheritance.cpp
+//cl /EHsc /I D:\Project\boost_1_53_0\boost_1_53_0\ sizeof_class.cpp
 #include <iostream>
+#include <vector>
 
 class A{
 	public:
@@ -39,6 +40,11 @@ class C: public B
 int main()
 {
 	C c(0x60);
+	int array[100];
+	array[1] = 9810;
+	std::vector<int> temp(array, array+100);
+	temp[1] = 1980;
+	std::cout << array[1] << "  " << temp[1] << "\n";
 	char * x = reinterpret_cast<char *>(&c);
 	//c.foo();
 	std::cout << "Class C size = "<< sizeof(C)  ;
@@ -46,6 +52,7 @@ int main()
 	printf("\nAddress of C = %lx\n\n", &c);
 	for(int index =0; index < sizeof(C); index++)
 	   { printf("%x ", *x); x++;}
+
 	return 0;
 }
 
